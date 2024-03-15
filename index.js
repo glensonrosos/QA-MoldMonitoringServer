@@ -3,9 +3,12 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+import itemRoutes from './routes/item.js';
+import moldRoutes from './routes/mold.js';
 import buyerRoutes from './routes/buyer.js';
 import materialRoutes from './routes/material.js';
 import supplierRoutes from './routes/supplier.js';
+import deliveryRoutes from './routes/delivery.js';
 
 const app = express();
 
@@ -37,9 +40,12 @@ mongoose.connect(CONNECTION_URL,{useNewUrlParser:true, useUnifiedTopology:true})
     .catch((error) => console.log(error.message));
 
 
-app.use('/oc/buyers',buyerRoutes);
-app.use('/oc/materials',materialRoutes);
-app.use('/oc/suppliers',supplierRoutes);
+app.use('/mm/buyers',buyerRoutes);
+app.use('/mm/materials',materialRoutes);
+app.use('/mm/suppliers',supplierRoutes);
+app.use('/mm/items',itemRoutes);
+app.use('/mm/molds',moldRoutes);
+app.use('/mm/deliveries',deliveryRoutes);
 
 // DOCKER
 //https://www.youtube.com/watch?v=rOTqprHv1YE

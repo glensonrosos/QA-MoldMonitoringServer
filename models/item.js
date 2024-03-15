@@ -1,11 +1,20 @@
 import mongoose, { Schema } from 'mongoose';
 
 const itemSchema = mongoose.Schema({
-    code:{ type: String, unique: true, required: true, dropDups: true},
-    description:String,
-    supplierId: Schema.Types.ObjectId,
-    buyerId: Schema.Types.ObjectId,
-    materialId: Schema.Types.ObjectId,
+    itemCode:{ type: String, unique: true, required: true, dropDups: true},
+    itemDescription:String,
+    supplier:{
+        _id : Schema.Types.ObjectId,
+        name:String,
+    } ,
+    buyer:{
+        _id : Schema.Types.ObjectId,
+        name:String,
+    },
+    material:{
+        _id : Schema.Types.ObjectId,
+        name:String,
+    },
     createdAt:Date,
     updatedAt:Date,
     deletedAt:Date,

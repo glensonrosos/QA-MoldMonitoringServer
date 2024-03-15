@@ -1,17 +1,22 @@
 import mongoose, { Schema } from 'mongoose';
 
 const moldSchema = mongoose.Schema({
-    code:{ type: String, unique: true, required: true, dropDups: true},
-    itemId: Schema.Types.ObjectId,
+    moldNumber: String,
+    itemId: {
+      _id: Schema.Types.ObjectId,
+      name:String,
+    },
     validationDate: Date,
     life: Number,
+    delivered: Number,
     condition:{
         name:String,
-        code:Number
+        label:String,
+        color:String,
     },
-    percentRejected: Number,
+    threshold:Number,
     lastEditdBy:String,
-    Remarks:String,
+    remarks:String,
     createdAt:Date,
     updatedAt:Date,
     deletedAt:Date,
